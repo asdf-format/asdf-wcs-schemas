@@ -29,15 +29,6 @@ def get_resource_mappings():
         if not resources_root.is_dir():
             raise RuntimeError("Missing resources directory")
 
-    s = DirectoryResourceMapping(
-        resources_root / "schemas" / "stsci.edu" / "gwcs",
-        "http://stsci.edu/schemas/gwcs/",
-    )
-    print(f"\n\n++++++++++++++++++++++++++++++++\n{s}\n")
-    for i in s:
-        print(i)
-
-
     return [
         DirectoryResourceMapping(
             resources_root / "schemas" / "stsci.edu" / "gwcs",
