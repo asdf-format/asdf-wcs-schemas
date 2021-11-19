@@ -10,5 +10,5 @@ description: |
   Inputs are index of refraction and direction cosines.
   Outputs are direction cosines.
 
-$ref: "tag:stsci.edu:asdf/transform/transform-1.2.0"
+$ref: "http://stsci.edu/schemas/asdf/transform/transform-1.2.0"
 ...

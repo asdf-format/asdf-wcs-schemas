@@ -13,7 +13,7 @@ description: |
      \\frac{(B3 * \\lambda^2 )}{(\\lambda^2 - C3)} $$
 
 allOf:
-  - $ref: "tag:stsci.edu:asdf/transform/transform-1.2.0"
+  - $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.2.0"
   - type: object
     properties:
       B_coef:
@@ -21,7 +21,7 @@ allOf:
           B coefficients in Sellmeier equation.
         anyOf:
           - type: array
-          - $ref: "tag:stsci.edu:asdf/core/ndarray-1.0.0"
+          - $ref: "http://stsci.edu/schemas/asdf/core/ndarray-1.0.0"
         items:
           type: number
         minItems: 3
@@ -31,7 +31,7 @@ allOf:
           C coefficients in Sellmeier equation.
         anyOf:
           - type: array
-          - $ref: "tag:stsci.edu:asdf/core/ndarray-1.0.0"
+          - $ref: "http://stsci.edu/schemas/asdf/core/ndarray-1.0.0"
         items:
           type: number
         minItems: 3

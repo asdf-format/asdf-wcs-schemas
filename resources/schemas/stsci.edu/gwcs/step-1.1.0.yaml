@@ -25,7 +25,7 @@ properties:
       exists only to describe the frames and units of the
       final output axes.
     anyOf:
-      - $ref: "tag:stsci.edu:asdf/transform/transform-1.2.0"
+      - $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.2.0"
       - type: 'null'
     default: null
 

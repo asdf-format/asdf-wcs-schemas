@@ -9,7 +9,7 @@ description: |
   Sellmeier equation for glass used by Zemax
 
 allOf:
-  - $ref: "tag:stsci.edu:asdf/transform/transform-1.1.0"
+  - $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.1.0"
   - type: object
     properties:
       B_coef:
@@ -17,7 +17,7 @@ allOf:
           B coefficients in Sellmeier equation.
         anyOf:
           - type: array
-          - $ref: "tag:stsci.edu:asdf/core/ndarray-1.0.0"
+          - $ref: "http://stsci.edu/schemas/asdf/core/ndarray-1.0.0"
         items:
           type: number
         minItems: 3
@@ -27,7 +27,7 @@ allOf:
           C coefficients in Sellmeier equation.
         anyOf:
           - type: array
-          - $ref: "tag:stsci.edu:asdf/core/ndarray-1.0.0"
+          - $ref: "http://stsci.edu/schemas/asdf/core/ndarray-1.0.0"
         items:
           type: number
         minItems: 3
@@ -37,7 +37,7 @@ allOf:
           Thermal D coefficients of the glass.
         anyOf:
           - type: array
-          - $ref: "tag:stsci.edu:asdf/core/ndarray-1.0.0"
+          - $ref: "http://stsci.edu/schemas/asdf/core/ndarray-1.0.0"
         items:
           type: number
         minItems: 3
@@ -47,7 +47,7 @@ allOf:
           Thermal E coefficients of the glass.
         anyOf:
           - type: array
-          - $ref: "tag:stsci.edu:asdf/core/ndarray-1.0.0"
+          - $ref: "http://stsci.edu/schemas/asdf/core/ndarray-1.0.0"
         items:
           type: number
         minItems: 3
