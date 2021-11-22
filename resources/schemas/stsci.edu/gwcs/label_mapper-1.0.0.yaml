@@ -72,7 +72,7 @@ examples:
             n_inputs: 2
 
 allOf:
-  - $ref: "tag:stsci.edu:asdf/transform/transform-1.1.0"
+  - $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.1.0"
   - type: object
     properties:
       mapper:
@@ -87,8 +87,8 @@ allOf:
           It could be a dictionary which maps tuples to labels or floating point numbers to labels.
 
         anyOf:
-          - $ref: "tag:stsci.edu:asdf/core/ndarray-1.0.0"
-          - $ref: "tag:stsci.edu:asdf/transform/transform-1.1.0"
+          - $ref: "http://stsci.edu/schemas/asdf/core/ndarray-1.0.0"
+          - $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.1.0"
           - type: object
             properties:
               labels:
@@ -104,7 +104,7 @@ allOf:
               models:
                 type: array
                 items:
-                  $ref: "tag:stsci.edu:asdf/transform/transform-1.1.0"
+                  $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.1.0"
 
       inputs:
         type: array
@@ -113,7 +113,7 @@ allOf:
         description: |
           Names of inputs.
       inputs_mapping:
-        $ref: "tag:stsci.edu:asdf/transform/transform-1.1.0"
+        $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.1.0"
         description: |
           [mapping](https://asdf-standard.readthedocs.io/en/latest/generated/stsci.edu/asdf/transform/remap_axes-1.1.0.html)
       atol:
