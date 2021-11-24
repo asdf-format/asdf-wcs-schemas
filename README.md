@@ -1,20 +1,5 @@
-# WCS ASDF schemas
+# asdf-wcs-schemas
 
+This package provides ASDF schemas for validating WCS tags. Users should not need to install this directly; instead, install an implementation package such as gwcs, which includes asdf-wcs-schemas as a dependency.
 
-This is a repository for WCS schemas.
-
-
-## Installation
-
-To install the latest ``asdf-wcs-schemas`` release
-
-    pip install asdf-wcs-schemas
-
-To install the latest code from the repository
-
-    pip install git+https://github.com/spacetelescope/asdf-wcs-schemas.git
-
-To use the library
-
-    >>> import asdf_wcs_schemas
-
+![CI](https://github.com/asdf-format/asdf-wcs-schemas/workflows/CI/badge.svg)
