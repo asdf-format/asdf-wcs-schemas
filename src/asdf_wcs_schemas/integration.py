@@ -36,6 +36,6 @@ def get_resource_mappings():
         ),
         DirectoryResourceMapping(
             resources_root / "manifests",
-            "asdf://stsci.edu/schemas/gwcs/manifests/",
+            "asdf://asdf-format.org/astronomy/gwcs/manifests/",
         ),
     ]
