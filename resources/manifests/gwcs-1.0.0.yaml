@@ -1,7 +1,7 @@
 %YAML 1.1
 ---
-id: asdf://stsci.edu/schemas/gwcs/manifests/gwcs-schemas-1.0
-extension_uri: asdf://stsci.edu/schemas/gwcs/manifests/gwcs-schemas-1.0
+id: asdf://asdf-format.org/astronomy/gwcs/manifests/gwcs-1.0.0
+extension_uri: asdf://asdf-format.org/astronomy/gwcs/extensions/gwcs-1.0.0
 title: gwcs extension 1.0
 description: |-
   A set of tags for serializing STScI gwcs models.
