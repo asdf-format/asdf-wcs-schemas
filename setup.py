@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from pathlib import Path
 from setuptools import setup, find_packages
 
 
@@ -10,11 +11,14 @@ package_dir = {
     "asdf_wcs_schemas.resources": "resources",
 }
 
+
+def package_yaml_files(directory):
+    paths = sorted(Path(directory).rglob("*.yaml"))
+    return [str(p.relative_to(directory)) for p in paths]
+
+
 package_data = {
-    "asdf_wcs_schemas.resources": [
-        "manifests/*.yaml",
-        "schemas/stsci.edu/gwcs/*.yaml"
-    ],
+    "asdf_wcs_schemas.resources": package_yaml_files("resources"),
 }
 
 setup(
