@@ -19,11 +19,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: Python 3.6
-            runs-on: ubuntu-latest
-            python-version: 3.6
-            toxenv: py36
-
           - name: Python 3.7
             runs-on: ubuntu-latest
             python-version: 3.7
