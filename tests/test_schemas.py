@@ -11,8 +11,7 @@ import yaml
 SCHEMA_URI_PREFIX = "http://stsci.edu/schemas/gwcs/"
 METASCHEMA_URI = "http://stsci.edu/schemas/yaml-schema/draft-01"
 SCHEMA_URIS = [
-    u for u in asdf.get_config().resource_manager
-    if u.startswith(SCHEMA_URI_PREFIX)
+    u for u in asdf.get_config().resource_manager if u.startswith(SCHEMA_URI_PREFIX)
 ]
 
 
@@ -29,10 +28,12 @@ def schema(request):
 @pytest.fixture(scope="session")
 def valid_tag_uris(manifest):
     uris = {t["tag_uri"] for t in manifest["tags"]}
-    uris.update([
-        "tag:stsci.edu:asdf/time/time-1.1.0",
-        "tag:stsci.edu:asdf/core/ndarray-1.0.0",
-    ])
+    uris.update(
+        [
+            "tag:stsci.edu:asdf/time/time-1.1.0",
+            "tag:stsci.edu:asdf/core/ndarray-1.0.0",
+        ]
+    )
     return uris
 
 
@@ -43,16 +44,23 @@ def test_required_properties(schema):
 
 
 def test_schema_style(schema_content):
-    assert schema_content.startswith(b"%YAML 1.1\n---\n")
-    assert schema_content.endswith(b"\n...\n")
+    # xor used because windows is sometimes weird.
+
+    assert schema_content.startswith(b"%YAML 1.1\n---\n") ^ schema_content.startswith(
+        b"%YAML 1.1\r\n---\r\n"
+    )
+    assert schema_content.endswith(b"\n...\n") ^ schema_content.endswith(b"\r\n...\r\n")
     assert b"\t" not in schema_content
-    assert not any(l != l.rstrip() for l in schema_content.split(b"\n"))
+    assert (not any(l != l.rstrip() for l in schema_content.split(b"\n"))) ^ (
+        not any(l != l.rstrip() for l in schema_content.split(b"\r\n"))
+    )
 
 
 def test_property_order(schema, manifest):
     is_tag_schema = schema["id"] in {t["schema_uri"] for t in manifest["tags"]}
 
     if is_tag_schema:
+
         def callback(node):
             if isinstance(node, Mapping) and "propertyOrder" in node:
                 assert node.get("type") == "object"
@@ -70,9 +78,12 @@ def test_property_order(schema, manifest):
 
         asdf.treeutil.walk(schema, callback)
     else:
+
         def callback(node):
             if isinstance(node, Mapping):
-                assert "propertyOrder" not in node, "Only schemas associated with a tag may specify propertyOrder"
+                assert (
+                    "propertyOrder" not in node
+                ), "Only schemas associated with a tag may specify propertyOrder"
 
         asdf.treeutil.walk(schema, callback)
 
