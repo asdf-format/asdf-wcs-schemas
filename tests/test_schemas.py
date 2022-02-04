@@ -11,8 +11,7 @@ import yaml
 SCHEMA_URI_PREFIX = "http://stsci.edu/schemas/gwcs/"
 METASCHEMA_URI = "http://stsci.edu/schemas/yaml-schema/draft-01"
 SCHEMA_URIS = [
-    u for u in asdf.get_config().resource_manager
-    if u.startswith(SCHEMA_URI_PREFIX)
+    u for u in asdf.get_config().resource_manager if u.startswith(SCHEMA_URI_PREFIX)
 ]
 
 
@@ -29,10 +28,12 @@ def schema(request):
 @pytest.fixture(scope="session")
 def valid_tag_uris(manifest):
     uris = {t["tag_uri"] for t in manifest["tags"]}
-    uris.update([
-        "tag:stsci.edu:asdf/time/time-1.1.0",
-        "tag:stsci.edu:asdf/core/ndarray-1.0.0",
-    ])
+    uris.update(
+        [
+            "tag:stsci.edu:asdf/time/time-1.1.0",
+            "tag:stsci.edu:asdf/core/ndarray-1.0.0",
+        ]
+    )
     return uris
 
 
@@ -53,6 +54,7 @@ def test_property_order(schema, manifest):
     is_tag_schema = schema["id"] in {t["schema_uri"] for t in manifest["tags"]}
 
     if is_tag_schema:
+
         def callback(node):
             if isinstance(node, Mapping) and "propertyOrder" in node:
                 assert node.get("type") == "object"
@@ -70,9 +72,12 @@ def test_property_order(schema, manifest):
 
         asdf.treeutil.walk(schema, callback)
     else:
+
         def callback(node):
             if isinstance(node, Mapping):
-                assert "propertyOrder" not in node, "Only schemas associated with a tag may specify propertyOrder"
+                assert (
+                    "propertyOrder" not in node
+                ), "Only schemas associated with a tag may specify propertyOrder"
 
         asdf.treeutil.walk(schema, callback)
 
