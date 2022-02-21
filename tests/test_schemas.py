@@ -10,9 +10,7 @@ import yaml
 
 SCHEMA_URI_PREFIX = "http://stsci.edu/schemas/gwcs/"
 METASCHEMA_URI = "http://stsci.edu/schemas/yaml-schema/draft-01"
-SCHEMA_URIS = [
-    u for u in asdf.get_config().resource_manager if u.startswith(SCHEMA_URI_PREFIX)
-]
+SCHEMA_URIS = [u for u in asdf.get_config().resource_manager if u.startswith(SCHEMA_URI_PREFIX)]
 
 
 @pytest.fixture(scope="session", params=SCHEMA_URIS)
@@ -46,9 +44,7 @@ def test_required_properties(schema):
 def test_schema_style(schema_content):
     # xor used because windows is sometimes weird.
 
-    assert schema_content.startswith(b"%YAML 1.1\n---\n") ^ schema_content.startswith(
-        b"%YAML 1.1\r\n---\r\n"
-    )
+    assert schema_content.startswith(b"%YAML 1.1\n---\n") ^ schema_content.startswith(b"%YAML 1.1\r\n---\r\n")
     assert schema_content.endswith(b"\n...\n") ^ schema_content.endswith(b"\r\n...\r\n")
     assert b"\t" not in schema_content
     assert (not any(l != l.rstrip() for l in schema_content.split(b"\n"))) ^ (
@@ -81,9 +77,7 @@ def test_property_order(schema, manifest):
 
         def callback(node):
             if isinstance(node, Mapping):
-                assert (
-                    "propertyOrder" not in node
-                ), "Only schemas associated with a tag may specify propertyOrder"
+                assert "propertyOrder" not in node, "Only schemas associated with a tag may specify propertyOrder"
 
         asdf.treeutil.walk(schema, callback)
 

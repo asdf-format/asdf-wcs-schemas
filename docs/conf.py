@@ -33,9 +33,7 @@ from pkg_resources import get_distribution
 try:
     from sphinx_astropy.conf.v1 import *  # noqa
 except ImportError:
-    print(
-        "ERROR: the documentation requires the sphinx-astropy package to be installed"
-    )
+    print("ERROR: the documentation requires the sphinx-astropy package to be installed")
     sys.exit(1)
 
 # Get configuration information from setup.cfg
