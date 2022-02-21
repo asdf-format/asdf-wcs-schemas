@@ -4,3 +4,6 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
 write_to = "src/asdf_wcs_schemas/_version.py"
+
+[tool.black]
+line-length = 120
