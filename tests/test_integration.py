@@ -7,7 +7,6 @@ import asdf
 import pytest
 import yaml
 
-
 _MANIFESTS_ROOT = Path(__file__).parent.parent / "resources" / "manifests"
 _SCHEMAS_ROOT = Path(__file__).parent.parent / "resources" / "schemas"
 

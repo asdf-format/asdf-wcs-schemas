@@ -7,7 +7,6 @@ import asdf
 import pytest
 import yaml
 
-
 SCHEMA_URI_PREFIX = "http://stsci.edu/schemas/gwcs/"
 METASCHEMA_URI = "http://stsci.edu/schemas/yaml-schema/draft-01"
 SCHEMA_URIS = [u for u in asdf.get_config().resource_manager if u.startswith(SCHEMA_URI_PREFIX)]
