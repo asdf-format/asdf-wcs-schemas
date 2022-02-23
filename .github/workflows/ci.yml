@@ -73,3 +73,32 @@ jobs:
           pip install tox
       - name: Run tox
         run: tox -e ${{ matrix.toxenv }}
+
+  gwcs-dev:
+    name: Run gwcs development tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout asdf-wcs-schemas
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          path: asdf-wcs-schemas
+      - name: Checkout gwcs dev
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          repository: spacetelescope/gwcs
+          ref: master
+          path: gwcs
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install asdf-wcs-schemas
+        run: cd asdf-wcs-schemas && pip install .
+      - name: Install gwcs
+        run: cd gwcs && pip install -e .[test]
+      - name: Pip Freeze
+        run: pip freeze
+      - name: Run gwcs development tests
+        run: cd gwcs && pytest
