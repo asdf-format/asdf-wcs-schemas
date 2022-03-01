@@ -4,3 +4,23 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
 write_to = "src/asdf_wcs_schemas/_version.py"
+
+[tool.black]
+line-length = 120
+force-exclude = '''
+^/(
+  (
+      \.eggs
+    | \.git
+    | \.pytest_cache
+    | \.tox
+    | build
+    | dist
+  )/
+)
+'''
+
+[tool.isort]
+profile = "black"
+filter_files = true
+line_length = 120
