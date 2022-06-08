@@ -3,9 +3,20 @@
 WCS Schemas
 ===========
 
-The current ``wcs`` schemas:
+The ``wcs`` schemas.
+
+Current
+-------
 
 .. asdf-autoschemas::
 
-  wcs-1.0.0
+  step-1.1.0
+  wcs-1.1.0
+
+Legacy
+------
+
+.. asdf-autoschemas::
+
   step-1.0.0
+  wcs-1.0.0
