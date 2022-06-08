@@ -1,3 +1,8 @@
+0.1.2 (unreleased)
+------------------
+
+- Update documentation to be consistent with rest of ASDF. [#12]
+
 0.1.1 (2021-12-03)
 ------------------
 
