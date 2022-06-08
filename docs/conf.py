@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-# Licensed under a 3-clause BSD style license - see LICENSE.rst
-#
 # Astropy documentation build configuration file.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -29,7 +26,13 @@ import datetime
 import os
 import sys
 
-from pkg_resources import get_distribution
+# Ensure documentation examples are determinstically random.
+import numpy
+
+try:
+    numpy.random.seed(int(os.environ["SOURCE_DATE_EPOCH"]))
+except KeyError:
+    pass
 
 try:
     from sphinx_astropy.conf.v1 import *  # noqa
@@ -38,10 +41,11 @@ except ImportError:
     sys.exit(1)
 
 # Get configuration information from setup.cfg
-from configparser import ConfigParser
-
+try:
+    from ConfigParser import ConfigParser
+except ImportError:
+    from configparser import ConfigParser
 conf = ConfigParser()
-
 conf.read([os.path.join(os.path.dirname(__file__), "..", "setup.cfg")])
 setup_cfg = dict(conf.items("metadata"))
 
@@ -50,29 +54,24 @@ setup_cfg = dict(conf.items("metadata"))
 # If your documentation needs a minimal Sphinx version, state it here.
 # needs_sphinx = '1.2'
 
+intersphinx_mapping["pypa-packaging"] = ("https://packaging.python.org/en/latest/", None)  # noqa
+intersphinx_mapping["asdf"] = ("https://asdf.readthedocs.io/en/latest/", None)  # noqa
+intersphinx_mapping["asdf-standard"] = ("https://asdf-standard.readthedocs.io/en/latest/", None)  # noqa
+intersphinx_mapping["asdf-astropy"] = ("https://asdf-astropy.readthedocs.io/en/latest/", None)  # noqa
+intersphinx_mapping["pytest"] = ("https://docs.pytest.org/en/latest/", None)  # noqa
+intersphinx_mapping["gwcs"] = ("https://gwcs.readthedocs.io/en/latest/", None)  # noqa
+
 # To perform a Sphinx version check that needs to be more specific than
 # major.minor, call `check_sphinx_version("x.y.z")` here.
 # check_sphinx_version("1.2.1")
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns.append("_templates")
+exclude_patterns.append("_templates")  # noqa
 
 # This is added to the end of RST files - a good place to put substitutions to
 # be used globally.
-rst_epilog += """
-"""
-
-# Top-level directory containing ASDF schemas (relative to current directory)
-asdf_schema_path = "../resources/schemas"
-# This is the prefix common to all schema IDs in this repository
-asdf_schema_standard_prefix = "stsci.edu/gwcs"
-asdf_schema_reference_mappings = [
-    (
-        "tag:stsci.edu:gwcs",
-        "http://asdf-wcs-schemas.readthedocs.io/en/latest/generated/stsci.edu/gwcs/",
-    ),
-]
+rst_epilog += """"""  # noqa
 
 # -- Project information ------------------------------------------------------
 
@@ -84,8 +83,9 @@ copyright = "{0}, {1}".format(datetime.datetime.now().year, setup_cfg["author"])
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
+from pkg_resources import get_distribution  # noqa
 
-release = get_distribution(project).version
+release = get_distribution(setup_cfg["name"]).version
 # for example take major/minor
 version = ".".join(release.split(".")[:2])
 
@@ -105,16 +105,10 @@ version = ".".join(release.split(".")[:2])
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes. To override the custom theme, set this to the
 # name of a builtin theme or the name of a custom theme in html_theme_path.
-# html_theme = None
+html_theme = "sphinx_rtd_theme"
+html_theme_options = {}
 
-# See sphinx-bootstrap-theme for documentation of these options
-# https://github.com/ryan-roemer/sphinx-bootstrap-theme
-html_theme_options = {
-    "logotext1": "g",  # white,  semi-bold
-    "logotext2": "wcs",  # orange, light
-    "logotext3": ":docs",  # white,  light
-}
-
+html_static_path = ["_static"]
 
 # Custom sidebar templates, maps document names to template names.
 # html_sidebars = {}
@@ -122,7 +116,8 @@ html_theme_options = {
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-# html_favicon = ''
+html_favicon = "_static/logo.ico"
+html_logo = "_static/logo.png"
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
@@ -140,8 +135,9 @@ htmlhelp_basename = project + "doc"
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-# latex_documents = [('index', project + '.tex', project + u' Documentation',
-#                    author, 'manual')]
+latex_documents = [("index", project + ".tex", project + " Documentation", author, "manual")]
+
+latex_logo = "_static/logo.pdf"
 
 
 # -- Options for manual page output --------------------------------------------
@@ -150,20 +146,17 @@ htmlhelp_basename = project + "doc"
 # (source start file, name, description, authors, manual section).
 man_pages = [("index", project.lower(), project + " Documentation", [author], 1)]
 
-## -- Options for the edit_on_github extension ----------------------------------------
+sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname("__file__")), "sphinxext"))
+extensions += ["sphinx_asdf"]  # noqa
 
-if eval(setup_cfg.get("edit_on_github")):
-    extensions += ["astropy.sphinx.ext.edit_on_github"]
 
-    versionmod = __import__(setup_cfg["name"] + ".version")
-    edit_on_github_project = setup_cfg["github_project"]
-    if versionmod.version.release:
-        edit_on_github_branch = "v" + versionmod.version.version
-    else:
-        edit_on_github_branch = "master"
+def setup(app):
+    app.add_css_file("custom.css")
 
-    edit_on_github_source_root = ""
-    edit_on_github_doc_root = "docs"
 
-sys.path.insert(0, os.path.join(os.path.dirname("__file__"), "sphinxext"))
-extensions += ["sphinx_asdf"]
+# -- sphinx_asdf configuration ---------------------------------------------
+
+# Top-level directory containing ASDF schemas (relative to current directory)
+asdf_schema_path = "../resources/schemas/stsci.edu"
+# This is the prefix common to all schema IDs in this repository
+asdf_schema_standard_prefix = "gwcs"
