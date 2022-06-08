@@ -1,39 +1,52 @@
-GWCS Documentation
+.. _asdf-wcs-schemas:
+
+****************
+ASDF WCS Schemas
+****************
+
+The ASDf WCS Schemas define a set of schemas for serializing WCS objects for the
+:ref:`GWCS <gwcs:gwcs>` package.  These schemas are based upon the schemas in the
+:ref:`ASDF Standard <asdf-standard:asdf-standard>` and are packaged for use by
+the :ref:`ASDF <asdf:asdf>` library.
+
+.. note::
+   This is only a schema package, to use these schemas to serialize WCS objects,
+   one must install the :ref:`GWCS <gwcs:gwcs>` package.
+
+
+Included Resources
 ==================
 
-`GWCS <https://github.com/spacetelescope/gwcs>`__ is a package for managing
-the World Coordinate System (WCS) of astronomical data.
+The following are listings of all the schemas provided by this package for ASDF.
 
-Introduction & Motivation for GWCS
-----------------------------------
-
-WCS validation
-==============
-
-
-The WCS is validated when an object is read in or written to a file.
-However, this happens transparently to the end user and knowing
-the details of the validation machinery is not necessary to use or
-construct a WCS object.
-
-GWCS uses the `Advanced Scientific Data Format <https://asdf-standard.readthedocs.io/en/latest/>`__ (ASDF)
-to validate the transforms, coordinate frames and the overall WCS object structure.
-ASDF makes use of abstract data type
-definitions called ``schemas``. The serialization and deserialization happens in classes,
-referred to as ``tags``. Most of the transform schemas live in the ``asdf-standard`` package while most of the transform tags live in ``astropy``. :ref:`gwcs-schemas` are available for the WCS object, coordinate frames and some WCS specific transforms.
-
-Packages using GWCS may create their own transforms and schemas and register them as an ``Asdf Extension``. If those are of general use, it is recommended they be included in astropy.
-
-
-Using `gwcs`
-------------
+.. note::
+  Typically, schemas are used in ASDF via their tag, which can be found in the manifest.
+  When usina a WCS in ASDF it is recommended that you use the tag instead of a direct
+  reference to the schema. Moreover, when doing so make sure you are using the correct
+  manifest version.
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 1
 
-  asdf-wcs-schemas/schemas/index.rst
+  wcs.rst
+  frames.rst
+  transforms.rst
+  manifests.rst
 
-Reference/API
--------------
 
-.. automodapi:: asdf_wcs_schemas.integration
+Developer Resources
+===================
+
+.. toctree::
+  :maxdepth: 1
+
+  contributing.rst
+  changes.rst
+
+
+Index
+=====
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
