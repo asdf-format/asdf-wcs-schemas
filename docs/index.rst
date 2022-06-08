@@ -31,6 +31,7 @@ The following are listings of all the schemas provided by this package for ASDF.
   wcs.rst
   frames.rst
   transforms.rst
+  manifests.rst
 
 
 Developer Resources
