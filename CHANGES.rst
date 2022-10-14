@@ -3,6 +3,7 @@
 
 - Update documentation to be consistent with rest of ASDF. [#12]
 - Move remaining ``wcs`` schemas from ``asdf-standard`` to ``asdf-wcs-schemas``. [#19]
+- Switch over to ``pyproject.toml`` for build configuration. [#20]
 
 0.1.1 (2021-12-03)
 ------------------
