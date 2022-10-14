@@ -25,9 +25,12 @@
 import datetime
 import os
 import sys
+from pathlib import Path
 
 # Ensure documentation examples are determinstically random.
 import numpy
+import tomli
+from pkg_resources import get_distribution
 
 try:
     numpy.random.seed(int(os.environ["SOURCE_DATE_EPOCH"]))
@@ -40,16 +43,20 @@ except ImportError:
     print("ERROR: the documentation requires the sphinx-astropy package to be installed")
     sys.exit(1)
 
-# Get configuration information from setup.cfg
-try:
-    from ConfigParser import ConfigParser
-except ImportError:
-    from configparser import ConfigParser
-conf = ConfigParser()
-conf.read([os.path.join(os.path.dirname(__file__), "..", "setup.cfg")])
-setup_cfg = dict(conf.items("metadata"))
+
+# Get configuration information from `pyproject.toml`
+with open(Path(__file__).parent.parent / "pyproject.toml", "rb") as configuration_file:
+    conf = tomli.load(configuration_file)
+configuration = conf["project"]
 
 # -- General configuration ----------------------------------------------------
+
+project = configuration["name"]
+author = f"{configuration['authors'][0]['name']} <{configuration['authors'][0]['email']}>"
+copyright = f"{datetime.datetime.now().year}, {configuration['authors'][0]['name']}"
+
+release = get_distribution(configuration["name"]).version
+version = ".".join(release.split(".")[:2])
 
 # If your documentation needs a minimal Sphinx version, state it here.
 # needs_sphinx = '1.2'
@@ -74,20 +81,6 @@ exclude_patterns.append("_templates")  # noqa
 rst_epilog += """"""  # noqa
 
 # -- Project information ------------------------------------------------------
-
-# This does not *have* to match the package name, but typically does
-project = setup_cfg["name"]
-author = setup_cfg["author"]
-copyright = "{0}, {1}".format(datetime.datetime.now().year, setup_cfg["author"])
-
-# The version info for the project you're documenting, acts as replacement for
-# |version| and |release|, also used in various other places throughout the
-# built documents.
-from pkg_resources import get_distribution  # noqa
-
-release = get_distribution(setup_cfg["name"]).version
-# for example take major/minor
-version = ".".join(release.split(".")[:2])
 
 # -- Options for HTML output ---------------------------------------------------
 
