@@ -46,8 +46,8 @@ def test_schema_style(schema_content):
     assert schema_content.startswith(b"%YAML 1.1\n---\n") ^ schema_content.startswith(b"%YAML 1.1\r\n---\r\n")
     assert schema_content.endswith(b"\n...\n") ^ schema_content.endswith(b"\r\n...\r\n")
     assert b"\t" not in schema_content
-    assert (not any(l != l.rstrip() for l in schema_content.split(b"\n"))) ^ (
-        not any(l != l.rstrip() for l in schema_content.split(b"\r\n"))
+    assert (not any(line != line.rstrip() for line in schema_content.split(b"\n"))) ^ (
+        not any(line != line.rstrip() for line in schema_content.split(b"\r\n"))
     )
 
 

@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 
-from asdf.resource import DirectoryResourceMapping
+from asdf_standard import DirectoryResourceMapping
 
 if sys.version_info < (3, 9):
     import importlib_resources
