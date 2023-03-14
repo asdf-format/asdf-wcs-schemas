@@ -38,17 +38,17 @@ repos:
       exclude: "asdf/extern/.*"
 
 - repo: https://github.com/PyCQA/autoflake
-  rev: v2.0.0
+  rev: v2.0.2
   hooks:
   - id: autoflake
 
 - repo: https://github.com/pycqa/isort
-  rev: 5.11.4
+  rev: 5.12.0
   hooks:
     - id: isort
 
 - repo: https://github.com/psf/black
-  rev: 22.12.0
+  rev: 23.1.0
   hooks:
     - id: black
 
@@ -64,7 +64,7 @@ repos:
       exclude: "docs"
 
 - repo: https://github.com/PyCQA/bandit
-  rev: 1.7.4
+  rev: 1.7.5
   hooks:
     - id: bandit
       args: ["-c", "bandit.yaml"]
