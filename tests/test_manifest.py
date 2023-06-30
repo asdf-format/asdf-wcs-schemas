@@ -13,6 +13,8 @@ def test_manifest_valid(manifest):
     assert "title" in manifest
     assert "description" in manifest
 
+    tag_prefix = "tag:stsci.edu:gwcs/" if "gwcs" in manifest["id"] else "tag:stsci.edu:asdf/wcs/"
+
     for tag in manifest["tags"]:
         # Check that the schema exists:
         assert tag["schema_uri"] in asdf.get_config().resource_manager
@@ -20,4 +22,4 @@ def test_manifest_valid(manifest):
         # to a higher standard:
         assert "title" in tag
         assert "description" in tag
-        assert tag["tag_uri"].startswith("tag:stsci.edu:gwcs/")
+        assert tag["tag_uri"].startswith(tag_prefix)
