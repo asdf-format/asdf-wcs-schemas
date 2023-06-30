@@ -2,7 +2,6 @@
 ---
 $schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
 id: "http://stsci.edu/schemas/gwcs/sellmeier_glass-1.1.0"
-tag: "tag:stsci.edu:gwcs/sellmeier_glass-1.1.0"
 title: Sellmeier equation for glass
 
 description: |

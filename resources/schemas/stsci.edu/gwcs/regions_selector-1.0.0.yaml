@@ -2,7 +2,6 @@
 ---
 $schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
 id: "http://stsci.edu/schemas/gwcs/regions_selector-1.0.0"
-tag: "tag:stsci.edu:gwcs/regions_selector-1.0.0"
 title: >
   Represents a discontinuous transform.
 description: |
