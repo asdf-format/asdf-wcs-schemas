@@ -1,5 +1,4 @@
 import sys
-from pathlib import Path
 
 from asdf_standard import DirectoryResourceMapping
 
@@ -23,11 +22,7 @@ def get_resource_mappings():
     """
     resources_root = importlib_resources.files(asdf_wcs_schemas) / "resources"
     if not resources_root.is_dir():
-        # In an editable install, the resources directory will exist off the
-        # repository root:
-        resources_root = Path(__file__).parent.parent.parent / "resources"
-        if not resources_root.is_dir():
-            raise RuntimeError("Missing resources directory")
+        raise RuntimeError("Missing resources directory")
 
     return [
         DirectoryResourceMapping(

@@ -7,8 +7,9 @@ import asdf
 import pytest
 import yaml
 
-_MANIFESTS_ROOT = Path(__file__).parent.parent / "resources" / "manifests"
-_SCHEMAS_ROOT = Path(__file__).parent.parent / "resources" / "schemas"
+_RESOURCES_ROOT = Path(__file__).parent.parent / "src" / "asdf_wcs_schemas" / "resources"
+_MANIFESTS_ROOT = _RESOURCES_ROOT / "manifests"
+_SCHEMAS_ROOT = _RESOURCES_ROOT / "schemas"
 
 
 @pytest.mark.parametrize("manifest_path", _MANIFESTS_ROOT.glob("**/*.yaml"))
