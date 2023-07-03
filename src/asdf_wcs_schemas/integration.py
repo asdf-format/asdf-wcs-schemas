@@ -31,11 +31,11 @@ def get_resource_mappings():
 
     return [
         DirectoryResourceMapping(
-            resources_root / "schemas" / "stsci.edu" / "gwcs",
+            resources_root / "schemas",
             "http://stsci.edu/schemas/gwcs/",
         ),
         DirectoryResourceMapping(
-            resources_root / "manifests" / "gwcs",
+            resources_root / "manifests",
             "asdf://asdf-format.org/astronomy/gwcs/manifests/",
         ),
     ]
