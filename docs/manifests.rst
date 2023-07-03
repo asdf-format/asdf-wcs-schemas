@@ -10,7 +10,7 @@ GWCS
 ----
 
 .. asdf-autoschemas::
-   :schema_root: ../resources
-   :standard_prefix: manifests/gwcs
+   :schema_root: ../src/asdf_wcs_schemas/resources
+   :standard_prefix: manifests
 
    gwcs-1.0.0

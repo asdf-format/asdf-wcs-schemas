@@ -150,6 +150,6 @@ def setup(app):
 # -- sphinx_asdf configuration ---------------------------------------------
 
 # Top-level directory containing ASDF schemas (relative to current directory)
-asdf_schema_path = "../resources/schemas/stsci.edu"
+asdf_schema_path = "../src/asdf_wcs_schemas/resources/schemas"
 # This is the prefix common to all schema IDs in this repository
-asdf_schema_standard_prefix = "gwcs"
+asdf_schema_standard_prefix = ""
