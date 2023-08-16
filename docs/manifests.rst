@@ -14,3 +14,4 @@ GWCS
    :standard_prefix: manifests
 
    gwcs-1.0.0
+   gwcs-1.1.0
