@@ -32,7 +32,6 @@ The following are listings of all the schemas provided by this package for ASDF.
   frames.rst
   transforms.rst
   manifests.rst
-  legacy.rst
 
 
 Developer Resources
