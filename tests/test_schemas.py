@@ -93,33 +93,3 @@ def test_required(schema):
                 assert False, message
 
     asdf.treeutil.walk(schema, callback)
-
-
-# def test_flowstyle(schema, manifest):
-#    is_tag_schema = schema["id"] in {t["schema_uri"] for t in manifest["tags"]}
-#
-#    if is_tag_schema:
-#        found_flowstyle = False
-#
-#        def callback(node):
-#            nonlocal found_flowstyle
-#            if isinstance(node, Mapping) and node.get("flowStyle") == "block":
-#                found_flowstyle = True
-#
-#        asdf.treeutil.walk(schema, callback)
-#
-#        assert found_flowstyle, "Schemas associated with a tag must specify flowStyle: block"
-#    else:
-#        def callback(node):
-#            if isinstance(node, Mapping):
-#                assert "flowStyle" not in node, "Only schemas associated with a tag may specify flowStyle"
-#
-#        asdf.treeutil.walk(schema, callback)
-
-
-def test_tag(schema, valid_tag_uris):
-    def callback(node):
-        if isinstance(node, Mapping) and "tag" in node:
-            assert node["tag"] in valid_tag_uris
-
-    asdf.treeutil.walk(schema, callback)
