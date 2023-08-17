@@ -2,7 +2,7 @@
 ---
 id: asdf://asdf-format.org/astronomy/gwcs/manifests/gwcs-1.1.0
 extension_uri: asdf://asdf-format.org/astronomy/gwcs/extensions/gwcs-1.1.0
-title: gwcs extension 1.1
+title: gwcs extension 1.1.0
 description: |-
   A set of tags for serializing STScI gwcs models.
 asdf_standard_requirement:

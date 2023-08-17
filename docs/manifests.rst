@@ -13,5 +13,14 @@ GWCS
    :schema_root: ../resources
    :standard_prefix: manifests
 
-   gwcs-1.0.0
+   gwcs-1.0.1
    gwcs-1.1.0
+
+Legacy
+------
+
+.. asdf-autoschemas::
+   :schema_root: ../resources
+   :standard_prefix: manifests
+
+   gwcs-1.0.0

@@ -1,8 +1,8 @@
 %YAML 1.1
 ---
-id: asdf://asdf-format.org/astronomy/gwcs/manifests/gwcs-1.0.0
-extension_uri: asdf://asdf-format.org/astronomy/gwcs/extensions/gwcs-1.0.0
-title: gwcs extension 1.0
+id: asdf://asdf-format.org/astronomy/gwcs/manifests/gwcs-1.0.1
+extension_uri: asdf://asdf-format.org/astronomy/gwcs/extensions/gwcs-1.0.1
+title: gwcs extension 1.0.1
 description: |-
   A set of tags for serializing STScI gwcs models.
 asdf_standard_requirement:
@@ -20,12 +20,6 @@ tags:
     Represents a set of frames
 - tag_uri: "tag:stsci.edu:gwcs/direction_cosines-1.0.0"
   schema_uri: "http://stsci.edu/schemas/gwcs/direction_cosines-1.0.0"
-  title: >
-    Convert coordinates between vector and direction cosine form.
-  description: |
-    This schema is for transforms which convert to and from direction cosines.
-- tag_uri: "tag:stsci.edu:gwcs/direction_cosines-1.1.0"
-  schema_uri: "http://stsci.edu/schemas/gwcs/direction_cosines-1.1.0"
   title: >
     Convert coordinates between vector and direction cosine form.
   description: |
@@ -51,14 +45,6 @@ tags:
     Supports two models:
      - Given incident angle and wavelength compute the refraction/difraction angle.
      - Given an incident angle and a refraction angle compute the wavelength.
-- tag_uri: "tag:stsci.edu:gwcs/grating_equation-1.1.0"
-  schema_uri: "http://stsci.edu/schemas/gwcs/grating_equation-1.1.0"
-  title: >
-    A grating equation model.
-  description: |
-    Supports two models:
-     - Given incident angle and wavelength compute the refraction/difraction angle.
-     - Given an incident angle and a refraction angle compute the wavelength.
 - tag_uri: "tag:stsci.edu:gwcs/label_mapper-1.0.0"
   schema_uri: "http://stsci.edu/schemas/gwcs/label_mapper-1.0.0"
   title: >
@@ -72,27 +58,8 @@ tags:
     [regions_selector](ref:regions_selector-1.0.0)
     returns the transform corresponding to this label. This maps inputs
     (e.g. pixels on a detector) to transforms uniquely.
-- tag_uri: "tag:stsci.edu:gwcs/label_mapper-1.1.0"
-  schema_uri: "http://stsci.edu/schemas/gwcs/label_mapper-1.1.0"
-  title: >
-    Represents a mapping from a coordinate value to a label.
-  description: |
-    A label mapper instance maps inputs to a label.  It is used together
-    with
-    [regions_selector](ref:regions_selector-1.1.0). The
-    [label_mapper](ref:label_mapper-1.1.0)
-    returns the label corresponding to given inputs. The
-    [regions_selector](ref:regions_selector-1.1.0)
-    returns the transform corresponding to this label. This maps inputs
-    (e.g. pixels on a detector) to transforms uniquely.
 - tag_uri: "tag:stsci.edu:gwcs/regions_selector-1.0.0"
   schema_uri: "http://stsci.edu/schemas/gwcs/regions_selector-1.0.0"
-  title: >
-    Represents a discontinuous transform.
-  description: |
-    Maps regions to transgorms and evaluates the transforms with the corresponding inputs.
-- tag_uri: "tag:stsci.edu:gwcs/regions_selector-1.1.0"
-  schema_uri: "http://stsci.edu/schemas/gwcs/regions_selector-1.1.0"
   title: >
     Represents a discontinuous transform.
   description: |
@@ -107,35 +74,13 @@ tags:
     $$ n(\\lambda)^2 = 1 + \\frac{(B1 * \\lambda^2 )}{(\\lambda^2 - C1)} +
        \\frac{(B2 * \\lambda^2 )}{(\\lambda^2 - C2)} +
        \\frac{(B3 * \\lambda^2 )}{(\\lambda^2 - C3)} $$
-- tag_uri: "tag:stsci.edu:gwcs/sellmeier_glass-1.1.0"
-  schema_uri: "http://stsci.edu/schemas/gwcs/sellmeier_glass-1.1.0"
-  title: >
-    Sellmeier equation for glass
-  description: |
-    Sellmeier equation for glass.
-
-    $$ n(\\lambda)^2 = 1 + \\frac{(B1 * \\lambda^2 )}{(\\lambda^2 - C1)} +
-       \\frac{(B2 * \\lambda^2 )}{(\\lambda^2 - C2)} +
-       \\frac{(B3 * \\lambda^2 )}{(\\lambda^2 - C3)} $$
 - tag_uri: "tag:stsci.edu:gwcs/sellmeier_zemax-1.0.0"
   schema_uri: "http://stsci.edu/schemas/gwcs/sellmeier_zemax-1.0.0"
   title: Sellmeier equation for glass used by Zemax
   description: |
     Sellmeier equation for glass used by Zemax
-- tag_uri: "tag:stsci.edu:gwcs/sellmeier_zemax-1.1.0"
-  schema_uri: "http://stsci.edu/schemas/gwcs/sellmeier_zemax-1.1.0"
-  title: Sellmeier equation for glass used by Zemax
-  description: |
-    Sellmeier equation for glass used by Zemax
 - tag_uri: "tag:stsci.edu:gwcs/snell3d-1.0.0"
   schema_uri: "http://stsci.edu/schemas/gwcs/snell3d-1.0.0"
-  title: Snell Law in 3D space
-  description: |
-    Snell Law in 3D.
-    Inputs are index of refraction and direction cosines.
-    Outputs are direction cosines.
-- tag_uri: "tag:stsci.edu:gwcs/snell3d-1.1.0"
-  schema_uri: "http://stsci.edu/schemas/gwcs/snell3d-1.1.0"
   title: Snell Law in 3D space
   description: |
     Snell Law in 3D.
@@ -153,20 +98,8 @@ tags:
   description: |
     This schema is for transforms which convert between spherical coordinates
     (on the unit sphere) and Cartesian coordinates.
-- tag_uri: "tag:stsci.edu:gwcs/spherical_cartesian-1.1.0"
-  schema_uri: "http://stsci.edu/schemas/gwcs/spherical_cartesian-1.1.0"
-  title: >
-    Convert coordinates between spherical and Cartesian coordinates.
-  description: |
-    This schema is for transforms which convert between spherical coordinates
-    (on the unit sphere) and Cartesian coordinates.
 - tag_uri: "tag:stsci.edu:gwcs/step-1.0.0"
   schema_uri: "http://stsci.edu/schemas/gwcs/step-1.0.0"
-  title: >
-    Describes a single step of a WCS transform pipeline.
-  description: >
-- tag_uri: "tag:stsci.edu:gwcs/step-1.1.0"
-  schema_uri: "http://stsci.edu/schemas/gwcs/step-1.1.0"
   title: >
     Describes a single step of a WCS transform pipeline.
   description: >
@@ -182,14 +115,6 @@ tags:
   description: >
 - tag_uri: "tag:stsci.edu:gwcs/wcs-1.0.0"
   schema_uri: "http://stsci.edu/schemas/gwcs/wcs-1.0.0"
-  title: >
-    A system for describing generalized world coordinate transformations.
-  description: >
-    ASDF WCS is a way of specifying transformations (usually from
-    detector space to world coordinate space and back) by using the
-    transformations in the `transform-schema` module.
-- tag_uri: "tag:stsci.edu:gwcs/wcs-1.1.0"
-  schema_uri: "http://stsci.edu/schemas/gwcs/wcs-1.1.0"
   title: >
     A system for describing generalized world coordinate transformations.
   description: >
