@@ -71,9 +71,6 @@ packages = ["asdf_wcs_schemas", "asdf_wcs_schemas.resources"]
 
 [tool.pytest.ini_options]
 asdf_schema_root = 'resources/schemas'
-asdf_schema_skip_tests = """
-    stsci.edu/wcs/frame-1.0.0.yaml::test_example_0
-"""
 asdf_schema_tests_enabled = 'true'
 asdf_schema_ignore_unrecognized_tag = 'true'
 testpaths = """
