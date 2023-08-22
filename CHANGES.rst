@@ -3,6 +3,8 @@
 
 - Update documentation to be consistent with rest of ASDF. [#12]
 - Switch over to ``pyproject.toml`` for build configuration. [#20]
+- Remove duplicate tag versions in gwcs manifest 1.0.0 (adding 1.0.1)
+  and add 1.1.0 with only the newest tags [#46]
 
 0.1.1 (2021-12-03)
 ------------------

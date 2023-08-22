@@ -2,7 +2,6 @@
 ---
 $schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
 id: "http://stsci.edu/schemas/gwcs/direction_cosines-1.0.0"
-tag: "tag:stsci.edu:gwcs/direction_cosines-1.0.0"
 
 title: >
   Convert coordinates between vector and direction cosine form.

@@ -2,7 +2,6 @@
 ---
 $schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
 id: "http://stsci.edu/schemas/gwcs/label_mapper-1.1.0"
-tag: "tag:stsci.edu:gwcs/label_mapper-1.1.0"
 title: >
   Represents a mapping from a coordinate value to a label.
 description: |

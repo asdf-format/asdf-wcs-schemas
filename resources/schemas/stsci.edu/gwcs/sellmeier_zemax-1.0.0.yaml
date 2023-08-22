@@ -2,7 +2,6 @@
 ---
 $schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
 id: "http://stsci.edu/schemas/gwcs/sellmeier_zemax-1.0.0"
-tag: "tag:stsci.edu:gwcs/sellmeier_zemax-1.0.0"
 title: Sellmeier equation for glass used by Zemax
 
 description: |
