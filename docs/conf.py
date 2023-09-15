@@ -32,10 +32,8 @@ import numpy
 import tomli
 from pkg_resources import get_distribution
 
-try:
-    numpy.random.seed(int(os.environ["SOURCE_DATE_EPOCH"]))
-except KeyError:
-    pass
+
+numpy.random.seed(int(os.environ["SOURCE_DATE_EPOCH"]))
 
 try:
     from sphinx_astropy.conf.v1 import *  # noqa: F403
