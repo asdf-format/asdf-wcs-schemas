@@ -32,7 +32,6 @@ import numpy
 import tomli
 from pkg_resources import get_distribution
 
-
 numpy.random.seed(int(os.environ["SOURCE_DATE_EPOCH"]))
 
 try:
