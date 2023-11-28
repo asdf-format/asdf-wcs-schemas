@@ -1,7 +1,7 @@
 0.2.1 (unreleased)
 ------------------
 
--
+- Add gwcs-1.2.0 manifest with new wcs-1.2.0 schema. [#56]
 
 0.2.0 (2023-09-11)
 ------------------
