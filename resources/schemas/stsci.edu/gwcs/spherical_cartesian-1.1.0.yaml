@@ -13,7 +13,7 @@ description: |
 examples:
   -
     - Convert spherical coordinates to Cartesian coordinates.
-
+    - asdf-standard-1.5.0
     - |
 
         !<tag:stsci.edu:gwcs/spherical_cartesian-1.1.0>
@@ -21,7 +21,7 @@ examples:
 
   -
     - Convert Cartesian coordinates to spherical coordinates.
-
+    - asdf-standard-1.5.0
     - |
         !<tag:stsci.edu:gwcs/spherical_cartesian-1.1.0>
           transform_type: cartesian_to_spherical

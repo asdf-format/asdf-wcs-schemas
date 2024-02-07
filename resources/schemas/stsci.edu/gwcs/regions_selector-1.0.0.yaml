@@ -10,6 +10,7 @@ description: |
 examples:
   -
     - Create a regions_selector schema for 2 regions, labeled "1" and "2".
+    - asdf-standard-1.5.0
     - |
         !<tag:stsci.edu:gwcs/regions_selector-1.0.0>
           inputs: [x, y]
