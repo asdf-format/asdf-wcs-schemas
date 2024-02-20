@@ -18,6 +18,16 @@ jobs:
     strategy:
       matrix:
         include:
+          - name: Python 3.12 Schema validation tests
+            python-version: '3.12'
+            os: ubuntu-latest
+            toxenv: py312
+
+          - name: Python 3.11 Schema validation tests
+            python-version: '3.11'
+            os: ubuntu-latest
+            toxenv: py311
+
           - name: Python 3.10 Schema validation tests
             python-version: '3.10'
             os: ubuntu-latest
@@ -27,11 +37,6 @@ jobs:
             python-version: 3.9
             os: ubuntu-latest
             toxenv: py39
-
-          - name: Python 3.8 Schema validation tests
-            python-version: 3.8
-            os: ubuntu-latest
-            toxenv: py38
 
           - name: Twine check
             python-version: 3.9
