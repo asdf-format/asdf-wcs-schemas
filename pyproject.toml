@@ -42,7 +42,6 @@ docs = [
 ]
 test = [
     'pytest >= 4.6.0',
-    'pytest-openfiles >= 0.5.0',
     'asdf >= 2.8.0',
     'asdf-astropy',
 ]
