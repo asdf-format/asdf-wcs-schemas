@@ -15,7 +15,7 @@ classifiers = [
     'Development Status :: 5 - Production/Stable',
 ]
 dependencies = [
-    'asdf-standard >= 1.0.1',
+    'asdf-standard >= 1.1.0',
     'asdf-transform-schemas >= 0.3.0',
 ]
 dynamic = ['version']
