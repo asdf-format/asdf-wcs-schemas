@@ -96,6 +96,8 @@ jobs:
           python-version: 3.9
       - name: Install asdf-wcs-schemas
         run: cd asdf-wcs-schemas && pip install .
+      - name: Install older pytest
+        run: pip install "pytest<8.1"
       - name: Install gwcs
         run: cd gwcs && pip install -e .[test]
       - name: Pip Freeze
