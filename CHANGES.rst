@@ -1,4 +1,9 @@
-0.3.1 (unreleased)
+0.4.1 (unreleased)
+------------------
+
+-
+
+0.4.0 (2024-03-09)
 ------------------
 
 - Update schemas for ASDF standard 1.6.0. [#59]
