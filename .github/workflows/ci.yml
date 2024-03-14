@@ -39,24 +39,24 @@ jobs:
             toxenv: py39
 
           - name: Twine check
-            python-version: 3.9
+            python-version: 3.11
             os: ubuntu-latest
             toxenv: twine
 
           - name: Code style checks
-            python-version: 3.9
+            python-version: 3.11
             os: ubuntu-latest
             toxenv: codestyle
 
           - name: macOS
-            python-version: 3.9
+            python-version: 3.11
             os: macos-latest
-            toxenv: py39
+            toxenv: py311
 
           - name: Windows
-            python-version: 3.9
+            python-version: 3.11
             os: windows-latest
-            toxenv: py39
+            toxenv: py311
 
     steps:
       - name: Checkout code
@@ -90,14 +90,12 @@ jobs:
           repository: spacetelescope/gwcs
           ref: master
           path: gwcs
-      - name: Set up Python 3.9
+      - name: Set up Python 3.11
         uses: actions/setup-python@v2
         with:
-          python-version: 3.9
+          python-version: 3.11
       - name: Install asdf-wcs-schemas
         run: cd asdf-wcs-schemas && pip install .
-      - name: Install older pytest
-        run: pip install "pytest<8.1"
       - name: Install gwcs
         run: cd gwcs && pip install -e .[test]
       - name: Pip Freeze
