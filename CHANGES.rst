@@ -1,7 +1,7 @@
 0.4.1 (unreleased)
 ------------------
 
--
+- Update documentation configuration settings to be consistent with other asdf subprojects [#65]
 
 0.4.0 (2024-03-09)
 ------------------
