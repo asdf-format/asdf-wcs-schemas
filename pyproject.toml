@@ -39,7 +39,7 @@ docs = [
     'graphviz',
     'matplotlib',
     'docutils',
-    'sphinx-rtd-theme',
+    'furo',
 ]
 test = [
     'pytest >= 4.6.0',
@@ -49,7 +49,7 @@ test = [
 
 [project.urls]
 'tracker' = 'https://github.com/asdf-format/asdf-wcs-schemas/issues'
-'documentation' = 'https://asdf-wcs-schemas.readthedocs.io/en/stable'
+'documentation' = 'https://www.asdf-format.org/projects/asdf-wcs-schemas/en/latest'
 'repository' = 'https://github.com/asdf-format/asdf-wcs-schemas'
 
 [project.entry-points]
