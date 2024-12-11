@@ -53,7 +53,7 @@ configuration = conf["project"]
 
 project = configuration["name"]
 author = f"{configuration['authors'][0]['name']} <{configuration['authors'][0]['email']}>"
-copyright = f"{datetime.datetime.now().year}, {configuration['authors'][0]['name']}"
+copyright = f"{datetime.datetime.now().year}, {author}"
 
 release = get_distribution(configuration["name"]).version
 version = ".".join(release.split(".")[:2])
@@ -167,7 +167,7 @@ graphviz_dot_args = [
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [("index", project + ".tex", project + " Documentation", author, "manual")]
 
-latex_logo = "_static/images/logo-light.png"
+latex_logo = "_static/images/logo-light-mode.png"
 
 
 # -- Options for manual page output --------------------------------------------

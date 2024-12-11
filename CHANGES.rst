@@ -2,6 +2,7 @@
 ------------------
 
 - Update documentation configuration settings to be consistent with other asdf subprojects [#65]
+- Fix typo in latex logo path and footer copyright author text [#66]
 
 0.4.0 (2024-03-09)
 ------------------
