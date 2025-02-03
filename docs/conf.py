@@ -73,7 +73,7 @@ subprojects = {
     # main project
     "asdf-website": ("https://www.asdf-format.org/en/latest", None),
     # other subprojects
-    "asdf": ("https://asdf.readthedocs.io/en/latest/", None),
+    "asdf": ("https://www.asdf-format.org/projects/asdf/en/stable", None),
     "asdf-coordinates-schemas": ("https://www.asdf-format.org/projects/asdf-coordinates-schemas/en/latest/", None),
     "asdf-standard": ("https://asdf-standard.readthedocs.io/en/latest/", None),
     "asdf-transform-schemas": ("https://www.asdf-format.org/projects/asdf-transform-schemas/en/latest/", None),
