@@ -151,7 +151,7 @@ pygments_dark_style = "monokai"
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = f"{project.replace('_', ' ')} v{release}"
+html_title = f"{project.replace('_', ' ')} v{'.'.join(release.split('.')[:3])}"
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = project + "doc"
