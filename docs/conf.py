@@ -73,7 +73,7 @@ subprojects = {
     # main project
     "asdf-website": ("https://www.asdf-format.org/en/latest", None),
     # other subprojects
-    "asdf": ("https://asdf.readthedocs.io/en/latest/", None),
+    "asdf": ("https://www.asdf-format.org/projects/asdf/en/stable", None),
     "asdf-coordinates-schemas": ("https://www.asdf-format.org/projects/asdf-coordinates-schemas/en/latest/", None),
     "asdf-standard": ("https://asdf-standard.readthedocs.io/en/latest/", None),
     "asdf-transform-schemas": ("https://www.asdf-format.org/projects/asdf-transform-schemas/en/latest/", None),
@@ -104,6 +104,17 @@ rst_epilog += """"""
 # variables set in the global configuration. The variables set in the
 # global configuration are listed below, commented out.
 
+# Adds a global navigation in the topbar - consistent across subprojects
+
+globalnavlinks = {
+    "ASDF Projects": "https://www.asdf-format.org",
+    "Tutorials": "https://www.asdf-format.org/en/latest/tutorials/index.html",
+    "Community": "https://www.asdf-format.org/en/latest/community/index.html",
+}
+topbanner = ""
+for text, link in globalnavlinks.items():
+    topbanner += f"<a href={link}>{text}</a>"
+
 # Add any paths that contain custom themes here, relative to this directory.
 # To use a different custom theme, add the directory containing the theme.
 # html_theme_path = []
@@ -112,10 +123,6 @@ rst_epilog += """"""
 # a list of builtin themes. To override the custom theme, set this to the
 # name of a builtin theme or the name of a custom theme in html_theme_path.
 html_theme = "furo"
-html_theme_options = {
-    "light_logo": "images/logo-light-mode.png",
-    "dark_logo": "images/logo-dark-mode.png",
-}
 
 html_static_path = ["_static"]
 
@@ -131,6 +138,7 @@ html_logo = ""
 html_theme_options = {
     "light_logo": "images/logo-light-mode.png",
     "dark_logo": "images/logo-dark-mode.png",
+    "announcement": topbanner, 
 }
 
 pygments_style = "monokai"
@@ -143,7 +151,7 @@ pygments_dark_style = "monokai"
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = f"{project} v{release}"
+html_title = f"{project.replace('_', ' ')} v{release}"
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = project + "doc"

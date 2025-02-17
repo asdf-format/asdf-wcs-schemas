@@ -7,7 +7,7 @@ ASDF WCS Schemas
 The ASDf WCS Schemas define a set of schemas for serializing WCS objects for the
 :ref:`GWCS <gwcs:gwcs>` package.  These schemas are based upon the schemas in the
 :ref:`ASDF Standard <asdf-standard:asdf-standard>` and are packaged for use by
-the :ref:`ASDF <asdf:asdf>` library.
+the :ref:`asdf <asdf:asdf>` library.
 
 .. note::
    This is only a schema package, to use these schemas to serialize WCS objects,
@@ -42,11 +42,3 @@ Developer Resources
 
   contributing.rst
   changes.rst
-
-
-Index
-=====
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
