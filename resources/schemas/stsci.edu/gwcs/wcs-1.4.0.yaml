@@ -1,7 +1,7 @@
 %YAML 1.1
 ---
 $schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
-id: "http://stsci.edu/schemas/gwcs/wcs-1.3.0"
+id: "http://stsci.edu/schemas/gwcs/wcs-1.4.0"
 
 title: >
   A system for describing generalized world coordinate transformations.
@@ -36,7 +36,7 @@ properties:
       [inverse](https://asdf-standard.readthedocs.io/en/latest/generated/stsci.edu/asdf/transform/transform-1.2.0.html#inverse).
     type: array
     items:
-      $ref: step-1.2.0
+      tag: tag:stsci.edu:gwcs/step-1.*
 
 required: [name, steps]
 additionalProperties: true
