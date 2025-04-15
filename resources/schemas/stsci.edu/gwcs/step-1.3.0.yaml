@@ -1,7 +1,7 @@
 %YAML 1.1
 ---
 $schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
-id: "http://stsci.edu/schemas/gwcs/step-1.2.0"
+id: "http://stsci.edu/schemas/gwcs/step-1.3.0"
 
 title: >
   Describes a single step of a WCS transform pipeline.
@@ -15,7 +15,7 @@ properties:
       The frame of the inputs to the transform.
     anyOf:
       - type: string
-      - $ref: frame-1.1.0
+      - tag: tag:stsci.edu:gwcs/frame-1.*
 
   transform:
     description: |
