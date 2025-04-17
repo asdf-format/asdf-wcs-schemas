@@ -1,7 +1,7 @@
 %YAML 1.1
 ---
 $schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
-id: "http://stsci.edu/schemas/gwcs/regions_selector-1.2.0"
+id: "http://stsci.edu/schemas/gwcs/regions_selector-1.3.0"
 title: >
   Represents a discontinuous transform.
 description: |
@@ -12,7 +12,7 @@ examples:
     - Create a regions_selector schema for 2 regions, labeled "1" and "2".
     - asdf-standard-1.6.0
     - |
-        !<tag:stsci.edu:gwcs/regions_selector-1.2.0>
+        !<tag:stsci.edu:gwcs/regions_selector-1.3.0>
           inputs: [x, y]
           label_mapper: !<tag:stsci.edu:gwcs/label_mapper-1.2.0>
             mapper: !core/ndarray-1.1.0
@@ -58,14 +58,14 @@ examples:
 
 
 allOf:
-  - $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.3.0"
+  - $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.4.0"
   - type: object
     properties:
       label_mapper:
         description: |
           An instance of
-          [label_mapper-1.1.0](ref:label_mapper-1.2.0)
-        $ref: "./label_mapper-1.2.0"
+          [label_mapper-1.3.0](ref:label_mapper-1.3.0)
+        tag: "tag:stsci.edu:gwcs/label_mapper-1*"
       inputs:
         description: |
           Names of inputs.
@@ -96,7 +96,7 @@ allOf:
               A transform for each region. The order should match the order of labels.
             type: array
             items:
-              $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.3.0"
+              $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.4.0"
       undefined_transform_value:
         description: |
           Value to be returned if there's no transform defined for the inputs.
