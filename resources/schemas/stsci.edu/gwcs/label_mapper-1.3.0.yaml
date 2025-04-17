@@ -1,16 +1,16 @@
 %YAML 1.1
 ---
 $schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
-id: "http://stsci.edu/schemas/gwcs/label_mapper-1.2.0"
+id: "http://stsci.edu/schemas/gwcs/label_mapper-1.3.0"
 title: >
   Represents a mapping from a coordinate value to a label.
 description: |
   A label mapper instance maps inputs to a label.  It is used together
   with
-  [regions_selector](ref:regions_selector-1.2.0). The
-  [label_mapper](ref:label_mapper-1.2.0)
+  [regions_selector](ref:regions_selector-1.3.0). The
+  [label_mapper](ref:label_mapper-1.3.0)
   returns the label corresponding to given inputs. The
-  [regions_selector](ref:regions_selector-1.2.0)
+  [regions_selector](ref:regions_selector-1.3.0)
   returns the transform corresponding to this label. This maps inputs
   (e.g. pixels on a detector) to transforms uniquely.
 
@@ -19,7 +19,7 @@ examples:
     - Map array indices are to labels.
     - asdf-standard-1.6.0
     - |
-        !<tag:stsci.edu:gwcs/label_mapper-1.2.0>
+        !<tag:stsci.edu:gwcs/label_mapper-1.3.0>
           mapper: !core/ndarray-1.1.0
             data:
             - [1, 0, 2]
@@ -33,7 +33,7 @@ examples:
     - Map numbers dictionary to transforms which return labels.
     - asdf-standard-1.6.0
     - |
-        !<tag:stsci.edu:gwcs/label_mapper-1.2.0>
+        !<tag:stsci.edu:gwcs/label_mapper-1.3.0>
           atol: 1.0e-08
           inputs: [x, y]
           inputs_mapping: !transform/remap_axes-1.4.0
@@ -53,7 +53,7 @@ examples:
     - Map a number within a range of numbers to transforms which return labels.
     - asdf-standard-1.6.0
     - |
-        !<tag:stsci.edu:gwcs/label_mapper-1.2.0>
+        !<tag:stsci.edu:gwcs/label_mapper-1.3.0>
           mapper: !!omap
           - !!omap
             labels:
@@ -71,7 +71,7 @@ examples:
             n_inputs: 2
 
 allOf:
-  - $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.3.0"
+  - $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.4.0"
   - type: object
     properties:
       mapper:
@@ -86,8 +86,8 @@ allOf:
           It could be a dictionary which maps tuples to labels or floating point numbers to labels.
 
         anyOf:
-          - $ref: "http://stsci.edu/schemas/asdf/core/ndarray-1.1.0"
-          - $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.3.0"
+          - tag: "tag:stsci.edu:asdf/core/ndarray-1.*"
+          - $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.4.0"
           - type: object
             properties:
               labels:
@@ -103,7 +103,7 @@ allOf:
               models:
                 type: array
                 items:
-                  $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.3.0"
+                  $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.4.0"
 
       inputs:
         type: array
@@ -112,7 +112,7 @@ allOf:
         description: |
           Names of inputs.
       inputs_mapping:
-        $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.3.0"
+        $ref: "http://stsci.edu/schemas/asdf/transform/transform-1.4.0"
         description: |
           [mapping](https://asdf-standard.readthedocs.io/en/latest/generated/stsci.edu/asdf/transform/remap_axes-1.4.0.html)
       atol:
