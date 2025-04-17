@@ -1,7 +1,7 @@
 %YAML 1.1
 ---
 $schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
-id: "http://stsci.edu/schemas/gwcs/celestial_frame-1.1.0"
+id: "http://stsci.edu/schemas/gwcs/celestial_frame-1.2.0"
 
 title: >
   Represents a celestial frame.
@@ -21,5 +21,5 @@ allOf:
         minItems: 2
         maxItems: 3
 
-  - $ref: frame-1.1.0
+  - $ref: frame-1.2.0
 ...
