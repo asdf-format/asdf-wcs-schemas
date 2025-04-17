@@ -33,7 +33,7 @@ properties:
       The inverse transformation is determined automatically by
       reversing this list, and inverting each of the individual
       transforms according to the rules described in
-      [inverse](https://asdf-standard.readthedocs.io/en/latest/generated/stsci.edu/asdf/transform/transform-1.2.0.html#inverse).
+      [inverse](https://asdf-standard.readthedocs.io/en/latest/generated/stsci.edu/asdf/transform/transform-1.4.0.html#inverse).
     type: array
     items:
       tag: tag:stsci.edu:gwcs/step-1.*
