@@ -32,5 +32,5 @@ allOf:
         minItems: 2
         maxItems: 2
 
-  - tag: "tag:stsci.edu:gwcs/frame-1*"
+  - $ref: frame-1.2.0
 ...
