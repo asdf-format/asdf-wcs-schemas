@@ -27,7 +27,7 @@ examples:
         A pixel frame in three dimensions
     - asdf-standard-1.6.0
     - |
-        !<tag:stsci.edu:gwcs/frame-1.1.0>
+        !<tag:stsci.edu:gwcs/frame-1.2.0>
           axes_names: [raster position, slit position, wavelength]
           axes_order: [0, 1, 2]
           axes_type: [SPATIAL, SPATIAL, SPECTRAL]
