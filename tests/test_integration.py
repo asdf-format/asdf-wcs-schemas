@@ -1,27 +1,31 @@
-"""
-Test that the asdf library integration is working properly.
-"""
-from pathlib import Path
-
 import asdf
-import pytest
 import yaml
 
-_MANIFESTS_ROOT = Path(__file__).parent.parent / "resources" / "manifests"
-_SCHEMAS_ROOT = Path(__file__).parent.parent / "resources" / "schemas"
+
+def test_resource_id(resource_path):
+    resource_manager = asdf.get_config().resource_manager
+
+    with resource_path.open("rb") as f:
+        resource_content = f.read()
+    resource = yaml.safe_load(resource_content)
+    resource_uri = resource["id"]
+    assert resource_manager[resource_uri] == resource_content
 
 
-@pytest.mark.parametrize("manifest_path", _MANIFESTS_ROOT.glob("**/*.yaml"))
-def test_manifest_integration(manifest_path):
-    content = manifest_path.read_bytes()
-    manifest = yaml.safe_load(content)
-    asdf_content = asdf.get_config().resource_manager[manifest["id"]]
-    assert asdf_content == content
+def test_manifest(manifest_path):
+    resource_manager = asdf.get_config().resource_manager
 
+    with manifest_path.open("rb") as f:
+        manifest_content = f.read()
+    manifest = yaml.safe_load(manifest_content)
 
-@pytest.mark.parametrize("schema_path", _SCHEMAS_ROOT.glob("**/*.yaml"))
-def test_schema_integration(schema_path):
-    content = schema_path.read_bytes()
-    schema = yaml.safe_load(content)
-    asdf_content = asdf.get_config().resource_manager[schema["id"]]
-    assert asdf_content == content
+    manifest_schema = asdf.schema.load_schema("asdf://asdf-format.org/core/schemas/extension_manifest-1.0.0")
+
+    # The manifest must be valid against its own schema:
+    asdf.schema.validate(manifest, schema=manifest_schema)
+
+    for tag_definition in manifest["tags"]:
+        # The tag's schema must be available:
+        assert tag_definition["schema_uri"] in resource_manager
+
+    assert manifest["id"].endswith(manifest_path.stem)
