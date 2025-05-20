@@ -3,15 +3,11 @@ name = 'asdf_wcs_schemas'
 description = 'ASDF WCS schemas'
 readme = 'README.md'
 requires-python = '>=3.9'
-license = { file = 'LICENSE' }
+license-files = ['LICENSE']
 authors = [{ name = 'The ASDF Developers', email = 'help@stsci.edu' }]
 classifiers = [
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.9',
-    'Programming Language :: Python :: 3.10',
-    'Programming Language :: Python :: 3.11',
-    'Programming Language :: Python :: 3.12',
     'Development Status :: 5 - Production/Stable',
 ]
 dependencies = [
@@ -23,7 +19,7 @@ dynamic = ['version']
 
 [build-system]
 requires = [
-    "setuptools>=60",
+    "setuptools>77",
     "setuptools_scm[toml]>=3.4",
     "wheel"
 ]
