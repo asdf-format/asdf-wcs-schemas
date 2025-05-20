@@ -138,7 +138,7 @@ html_logo = ""
 html_theme_options = {
     "light_logo": "images/logo-light-mode.png",
     "dark_logo": "images/logo-dark-mode.png",
-    "announcement": topbanner, 
+    "announcement": topbanner,
 }
 
 pygments_style = "monokai"
