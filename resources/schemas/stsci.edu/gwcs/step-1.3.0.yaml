@@ -15,7 +15,7 @@ properties:
       The frame of the inputs to the transform.
     anyOf:
       - type: string
-      - tag: tag:stsci.edu:gwcs/frame-1.*
+      - $ref: frame-1.2.0
 
   transform:
     description: |

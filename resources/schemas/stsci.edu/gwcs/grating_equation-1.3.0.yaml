@@ -38,6 +38,7 @@ allOf:
           The groove density of the grating
         anyOf:
           - type: number
+          - tag: "tag:stsci.edu:asdf/unit/quantity-1.*"
           - tag: "tag:astropy.org:astropy/units/quantity-1.*"
       order:
         description: |
