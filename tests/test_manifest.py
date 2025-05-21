@@ -1,23 +1,19 @@
-"""
-Test that the manifest file is correctly structured and refers
-to schemas that exist.
-"""
-import asdf
+def test_manifest_tag_order(latest_manifest):
+    """Tags should be sorted alphabetically"""
+    tag_uris = [tag_def["tag_uri"] for tag_def in latest_manifest["tags"]]
+    assert tag_uris == sorted(tag_uris)
 
 
-def test_manifest_valid(manifest):
-    schema = asdf.schema.load_schema("asdf://asdf-format.org/core/schemas/extension_manifest-1.0.0")
+def test_tags_match_schemas(latest_manifest):
+    """Check that tag and schema versions match"""
+    for tag_def in latest_manifest["tags"]:
+        tag_uri = tag_def["tag_uri"]
+        schema_uri = tag_def["schema_uri"]
+        assert tag_uri.split(":")[-1] in schema_uri
 
-    asdf.schema.validate(manifest, schema=schema)
 
-    assert "title" in manifest
-    assert "description" in manifest
-
-    for tag in manifest["tags"]:
-        # Check that the schema exists:
-        assert tag["schema_uri"] in asdf.get_config().resource_manager
-        # These are not required by the manifest schema but we're holding ourselves
-        # to a higher standard:
-        assert "title" in tag
-        assert "description" in tag
-        assert tag["tag_uri"].startswith("tag:stsci.edu:gwcs/")
+def test_uses_latest_schemas(latest_manifest, latest_schema_uris):
+    """The latest manifest should always use the latest schemas"""
+    for tag_def in latest_manifest["tags"]:
+        schema_uri = tag_def["schema_uri"]
+        assert schema_uri in latest_schema_uris

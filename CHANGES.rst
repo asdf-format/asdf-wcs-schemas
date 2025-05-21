@@ -4,6 +4,7 @@
 - Update documentation configuration settings to be consistent with other asdf subprojects [#65]
 - Fix typo in latex logo path and footer copyright author text [#66]
 - Adds global navigation in docs top bar [#67]
+- Update schemas to prefer tag over ref [#68]
 
 0.4.0 (2024-03-09)
 ------------------
