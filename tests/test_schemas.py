@@ -1,6 +1,7 @@
 import re
 
 import asdf
+import pytest
 
 ALLOWED_REFS = (
     r"^http://stsci.edu/schemas/asdf/transform/transform-[0-9.]+$",
@@ -8,6 +9,9 @@ ALLOWED_REFS = (
     r"^frame-[0-9.]+$",
     r"^#.*$",
 )
+
+QUANTITY_TAGS = {"tag:stsci.edu:asdf/unit/quantity-1.*", "tag:astropy.org:astropy/units/quantity-1.*"}
+UNIT_TAGS = {"tag:stsci.edu:asdf/unit/unit-1.*", "tag:astropy.org:astropy/units/unit-1.*"}
 
 
 def test_only_known_refs(latest_schema):
@@ -50,3 +54,38 @@ def test_required(schema):
                 assert False, message
 
     asdf.treeutil.walk(schema, callback)
+
+
+@pytest.mark.parametrize("tag_set", (QUANTITY_TAGS, UNIT_TAGS))
+def test_tags_in_allof(latest_schema, tag_set):
+    """
+    Test that some tags (quantity and unit) where the
+    tag used depends on the value are always referenced in an
+    allof containing all tags.
+    """
+    # we walk_and_modify here to use postorder
+
+    def callback(node):
+        if not isinstance(node, dict):
+            return node
+        if "anyOf" in node:
+            # check if this anyof includes a tag in the set
+            seen = set()
+            for sub in node["anyOf"]:
+                if not isinstance(sub, dict):
+                    continue
+                if "tag" not in sub:
+                    continue
+                if sub["tag"] in tag_set:
+                    seen.add(sub["tag"])
+
+            if seen:
+                # if a tag was found, check both were found
+                assert seen == tag_set, f"anyOf {node} missing: {tag_set - seen}"
+                # remove the anyof so the code below can check for tags not in the anyof
+                return {k: v for k, v in node.items() if k != "anyOf"}
+        if tag := node.get("tag"):
+            assert tag not in tag_set, f"tag {tag} must be in an anyOf with: {tag_set}"
+        return node
+
+    asdf.treeutil.walk_and_modify(latest_schema, callback, postorder=False)
