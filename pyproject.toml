@@ -12,10 +12,8 @@ classifiers = [
 ]
 dependencies = [
     'asdf-standard >= 1.1.0',
-    #'asdf-transform-schemas >= 0.5.0',
-    'asdf-transform-schemas @ git+https://github.com/asdf-format/asdf-transform-schemas',
-    #'asdf-coordinates-schemas >= 0.3.0',
-    'asdf-coordinates-schemas @ git+https://github.com/asdf-format/asdf-coordinates-schemas',
+    'asdf-transform-schemas >= 0.6.0',
+    'asdf-coordinates-schemas >= 0.4.0',
 ]
 dynamic = ['version']
 
