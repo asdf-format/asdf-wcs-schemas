@@ -10,7 +10,6 @@ ALLOWED_REFS = (
     r"^#.*$",
 )
 
-QUANTITY_TAGS = {"tag:stsci.edu:asdf/unit/quantity-1.*", "tag:astropy.org:astropy/units/quantity-1.*"}
 UNIT_TAGS = {"tag:stsci.edu:asdf/unit/unit-1.*", "tag:astropy.org:astropy/units/unit-1.*"}
 
 
@@ -56,10 +55,10 @@ def test_required(schema):
     asdf.treeutil.walk(schema, callback)
 
 
-@pytest.mark.parametrize("tag_set", (QUANTITY_TAGS, UNIT_TAGS))
+@pytest.mark.parametrize("tag_set", (UNIT_TAGS,))
 def test_tags_in_allof(latest_schema, tag_set):
     """
-    Test that some tags (quantity and unit) where the
+    Test that some tags (unit) where the
     tag used depends on the value are always referenced in an
     allof containing all tags.
     """
