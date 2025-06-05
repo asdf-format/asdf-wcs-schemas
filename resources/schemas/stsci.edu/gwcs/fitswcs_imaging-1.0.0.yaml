@@ -1,0 +1,84 @@
+%YAML 1.1
+---
+$schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
+id: "http://stsci.edu/schemas/gwcs/fitswcs_imaging-1.0.0"
+
+title: >
+  FITS WCS Imaging Transform
+
+description: |
+  This transform represents a FITS WCS standard Imaging transform.
+  It is defined by the typical FITS WCS parameters (CRPIX, CRVAL, CDELT, PC
+  and projection) and implemented using astropy.modeling transforms.
+
+
+allOf:
+  - $ref:  "http://stsci.edu/schemas/asdf/transform/transform-1.4.0"
+  - object:
+    properties:
+      crpix:
+        title: CRPIX
+        description: |
+          Pixel coordinate of the reference point.
+        anyOf:
+          - tag: "tag:stsci.edu:asdf/core/ndarray-1.*"
+          - tag: "tag:stsci.edu:asdf/unit/quantity-1.*"
+          - type: array
+            items:
+              type: number
+              minItems: 2
+              maxItems: 2
+      crval:
+        title: CRVAL
+        description: |
+          Celestial longitude and latitude of the fiducial point.
+        anyOf:
+          - tag: "tag:stsci.edu:asdf/core/ndarray-1.*"
+          - tag: "tag:stsci.edu:asdf/unit/quantity-1.*"
+          - type: array
+            items:
+              type: number
+              minItems: 2
+              maxItems: 2
+      cdelt:
+        title: CDELT
+        description: |
+          Coordinate scales.
+        anyOf:
+          - tag: "tag:stsci.edu:asdf/core/ndarray-1.*"
+          - tag: "tag:stsci.edu:asdf/unit/quantity-1.*"
+          - type: array
+            items:
+              type: number
+              minItems: 2
+              maxItems: 2
+      pc:
+        title: PC matrix
+        description: |
+          Linear transformation matrix.
+        anyOf:
+          - tag: "tag:stsci.edu:asdf/core/ndarray-1.*"
+          - tag: "tag:stsci.edu:asdf/unit/quantity-1.*"
+          - type: array
+            items:
+              type: array
+              items:
+                type: number
+              minItems: 2
+              maxItems: 2
+            minItems: 2
+            maxItems: 2
+      projection:
+        title: Celestial sphere projection
+        description: |
+          An instance of one of the classes in astropy.modeling.projections.
+        anyOf:
+          - $ref: "http://stsci.edu/schemas/asdf/transform/zenithal-1.4.0"
+          - $ref: "http://stsci.edu/schemas/asdf/transform/conic-1.5.0"
+          - $ref: "http://stsci.edu/schemas/asdf/transform/quadcube-1.4.0"
+          - $ref: "http://stsci.edu/schemas/asdf/transform/pseudoconic-1.4.0"
+          - $ref: "http://stsci.edu/schemas/asdf/transform/pseudocylindrical-1.4.0"
+          - $ref: "http://stsci.edu/schemas/asdf/transform/cylindrical-1.4.0"
+
+    required: [crpix, crval, cdelt, pc, projection]
+...
