@@ -7,6 +7,12 @@ ALLOWED_REFS = (
     r"^http://stsci.edu/schemas/asdf/transform/transform-[0-9.]+$",
     r"^http://astropy.org/schemas/astropy/coordinates/frames/baseframe-[0-9.]+$",
     r"^frame-[0-9.]+$",
+    r"^http://stsci.edu/schemas/asdf/transform/zenithal-[0-9.]+$",
+    r"^http://stsci.edu/schemas/asdf/transform/conic-[0-9.]+$",
+    r"^http://stsci.edu/schemas/asdf/transform/quadcube-[0-9.]+$",
+    r"^http://stsci.edu/schemas/asdf/transform/pseudoconic-[0-9.]+$",
+    r"^http://stsci.edu/schemas/asdf/transform/pseudocylindrical-[0-9.]+$",
+    r"^http://stsci.edu/schemas/asdf/transform/cylindrical-[0-9.]+$",
     r"^#.*$",
 )
 

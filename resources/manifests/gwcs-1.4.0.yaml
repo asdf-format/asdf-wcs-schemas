@@ -24,6 +24,13 @@ tags:
     Convert coordinates between vector and direction cosine form.
   description: |
     This schema is for transforms which convert to and from direction cosines.
+- tag_uri: "tag:stsci.edu:gwcs/fitswcs_imaging-1.0.0"
+  schema_uri: "http://stsci.edu/schemas/gwcs/fitswcs_imaging-1.0.0"
+  title: >
+    The transform defined by the FITS Imaging WCS standard.
+  description: >
+    Definition of a transform using FITS WCS Imaging Standard Parameters
+    and transformations in the `transform-schema` module.
 - tag_uri: "tag:stsci.edu:gwcs/frame-1.2.0"
   schema_uri: "http://stsci.edu/schemas/gwcs/frame-1.2.0"
   title: |
