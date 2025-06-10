@@ -3,8 +3,7 @@
 $schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
 id: "http://stsci.edu/schemas/gwcs/fitswcs_imaging-1.0.0"
 
-title: >
-  FITS WCS Imaging Transform
+title: FITS WCS Imaging Transform
 
 description: |
   This transform represents a FITS WCS standard Imaging transform.

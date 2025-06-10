@@ -26,11 +26,12 @@ tags:
     This schema is for transforms which convert to and from direction cosines.
 - tag_uri: "tag:stsci.edu:gwcs/fitswcs_imaging-1.0.0"
   schema_uri: "http://stsci.edu/schemas/gwcs/fitswcs_imaging-1.0.0"
-  title: >
-    The transform defined by the FITS Imaging WCS standard.
+  title: FITS WCS Imaging Transform.
   description: >
-    Definition of a transform using FITS WCS Imaging Standard Parameters
-    and transformations in the `transform-schema` module.
+    This transform represents a FITS WCS standard Imaging transform.
+    It is defined by the typical FITS WCS parameters (CRPIX, CRVAL, CDELT, PC
+    and projection) and implemented using astropy.modeling transforms. Unlike
+    the FITS implementation inputs and CRPIX are 0-indexed.
 - tag_uri: "tag:stsci.edu:gwcs/frame-1.2.0"
   schema_uri: "http://stsci.edu/schemas/gwcs/frame-1.2.0"
   title: |
