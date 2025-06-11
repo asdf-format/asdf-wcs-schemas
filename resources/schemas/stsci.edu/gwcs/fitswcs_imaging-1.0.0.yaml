@@ -1,0 +1,64 @@
+%YAML 1.1
+---
+$schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
+id: "http://stsci.edu/schemas/gwcs/fitswcs_imaging-1.0.0"
+
+title: FITS WCS Imaging Transform
+
+description: |
+  This transform represents a FITS WCS standard Imaging transform.
+  It is defined by the typical FITS WCS parameters (CRPIX, CRVAL, CDELT, PC
+  and projection) and implemented using astropy.modeling transforms. Unlike
+  the FITS implementation inputs and CRPIX are 0-indexed.
+
+
+allOf:
+  - $ref:  "http://stsci.edu/schemas/asdf/transform/transform-1.4.0"
+  - object:
+    properties:
+      crpix:
+        title: CRPIX
+        description: |
+          Pixel coordinate of the reference point, 0-indexed.
+        tag: "tag:stsci.edu:asdf/core/ndarray-1.*"
+        ndim: 1
+        datatype: float64
+        shape: [2]
+      crval:
+        title: CRVAL
+        description: |
+          Celestial longitude and latitude of the fiducial point (in degrees).
+        tag: "tag:stsci.edu:asdf/core/ndarray-1.*"
+        ndim: 1
+        datatype: float64
+        shape: [2]
+      cdelt:
+        title: CDELT
+        description: |
+          Coordinate scales.
+        tag: "tag:stsci.edu:asdf/core/ndarray-1.*"
+        ndim: 1
+        datatype: float64
+        shape: [2]
+      pc:
+        title: PC matrix
+        description: |
+          Linear transformation matrix.
+        tag: "tag:stsci.edu:asdf/core/ndarray-1.*"
+        ndim: 2
+        datatype: float64
+        shape: [2, 2]
+      projection:
+        title: Celestial sphere projection
+        description: |
+          An instance of one of the classes in astropy.modeling.projections.
+        anyOf:
+          - $ref: "http://stsci.edu/schemas/asdf/transform/zenithal-1.4.0"
+          - $ref: "http://stsci.edu/schemas/asdf/transform/conic-1.5.0"
+          - $ref: "http://stsci.edu/schemas/asdf/transform/quadcube-1.4.0"
+          - $ref: "http://stsci.edu/schemas/asdf/transform/pseudoconic-1.4.0"
+          - $ref: "http://stsci.edu/schemas/asdf/transform/pseudocylindrical-1.4.0"
+          - $ref: "http://stsci.edu/schemas/asdf/transform/cylindrical-1.4.0"
+
+    required: [crpix, crval, cdelt, pc, projection]
+...

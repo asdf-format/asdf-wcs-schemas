@@ -5,6 +5,7 @@
 - Fix typo in latex logo path and footer copyright author text [#66]
 - Adds global navigation in docs top bar [#67]
 - Update schemas to prefer tag over ref [#68]
+- Add a schema for imaging WCS as defined by the FITS WCS standard. [#72]
 
 0.4.0 (2024-03-09)
 ------------------
