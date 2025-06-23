@@ -29,8 +29,12 @@ from pathlib import Path
 
 # Ensure documentation examples are determinstically random.
 import numpy
-import tomli
 from pkg_resources import get_distribution
+
+try:
+    import tomllib
+except ImportError:
+    import tomli
 
 try:
     numpy.random.seed(int(os.environ["SOURCE_DATE_EPOCH"]))
@@ -46,7 +50,7 @@ except ImportError:
 
 # Get configuration information from `pyproject.toml`
 with open(Path(__file__).parent.parent / "pyproject.toml", "rb") as configuration_file:
-    conf = tomli.load(configuration_file)
+    conf = tomllib.load(configuration_file)
 configuration = conf["project"]
 
 # -- General configuration ----------------------------------------------------
