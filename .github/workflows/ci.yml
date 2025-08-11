@@ -66,7 +66,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Set up Python ${{ matrix.python-version }}
@@ -85,12 +85,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout asdf-wcs-schemas
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           path: asdf-wcs-schemas
       - name: Checkout gwcs dev
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           repository: spacetelescope/gwcs
