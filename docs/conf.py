@@ -79,7 +79,7 @@ subprojects = {
     "asdf-transform-schemas": ("https://www.asdf-format.org/projects/asdf-transform-schemas/en/latest/", None),
 }
 
-intersphinx_mapping.update(subprojects)  # noqa: F405
+intersphinx_mapping.update(subprojects)
 
 # To perform a Sphinx version check that needs to be more specific than
 # major.minor, call `check_sphinx_version("x.y.z")` here.
@@ -185,7 +185,7 @@ latex_logo = "_static/images/logo-light-mode.png"
 man_pages = [("index", project.lower(), project + " Documentation", [author], 1)]
 
 sys.path.insert(0, os.path.join(os.path.abspath(os.path.dirname("__file__")), "sphinxext"))
-extensions += ["sphinx_asdf", "sphinx.ext.intersphinx", "sphinx.ext.extlinks"]  # noqa: F405
+extensions += ["sphinx_asdf", "sphinx.ext.intersphinx", "sphinx.ext.extlinks"]
 
 
 def setup(app):

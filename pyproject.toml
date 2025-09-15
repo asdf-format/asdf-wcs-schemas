@@ -93,7 +93,7 @@ force-exclude = '''
 [tool.ruff]
 line-length = 120
 
-[too.ruff.lint]
+[tool.ruff.lint]
 select = [
     "E", # pycodestyle
     "F", # pyflakes, autoflake
@@ -102,8 +102,13 @@ select = [
     "UP", # pyupgrade
     "RUF",  # ruff specific, includes yesqa
 ]
+extend-ignore = [
+    "RUF005",
+]
 
 [tool.ruff.lint.per-file-ignores]
+"test_*.py" = ["S101"]
+"tests/*" = ["S101"]
 "docs/conf.py" = ["F405"]
 
 [tool.codespell]
