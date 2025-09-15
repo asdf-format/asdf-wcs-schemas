@@ -27,7 +27,7 @@ import os
 import sys
 from pathlib import Path
 
-# Ensure documentation examples are determinstically random.
+# Ensure documentation examples are deterministically random.
 import numpy
 import tomli
 from pkg_resources import get_distribution

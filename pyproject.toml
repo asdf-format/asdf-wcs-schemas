@@ -103,5 +103,8 @@ select = [
     "RUF",  # ruff specific, includes yesqa
 ]
 
+[tool.ruff.lint.per-file-ignores]
+"docs/conf.py" = ["F405"]
+
 [tool.codespell]
 skip="*.pdf,*.fits,*.asdf,.tox,build,./tags,.git,docs/build"
