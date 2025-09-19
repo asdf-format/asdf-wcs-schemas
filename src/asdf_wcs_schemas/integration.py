@@ -1,12 +1,7 @@
-import sys
+import importlib.resources as importlib_resources
 from pathlib import Path
 
 from asdf_standard import DirectoryResourceMapping
-
-if sys.version_info < (3, 9):
-    import importlib_resources
-else:
-    import importlib.resources as importlib_resources
 
 import asdf_wcs_schemas
 
