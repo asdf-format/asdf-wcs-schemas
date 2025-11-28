@@ -1,0 +1,46 @@
+
+%YAML 1.1
+---
+$schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
+id: "http://stsci.edu/schemas/gwcs/discrete_frame-1.0.0"
+
+title: >
+  Represents a disctrete frame.
+
+examples:
+  -
+    - |
+        A disctrete frame
+    - |
+        !<tag:stsci.edu:gwcs/discrete_frame-1.0.0>
+          name: spatial_order
+          axes_order: [2]
+          disctrete_set: [1, 2, 3]
+
+
+allOf:
+  - type: object
+    properties:
+      axes_names:
+        minItems: 1
+        maxItems: 1
+
+      axes_order:
+        minItems: 1
+        maxItems: 1
+
+      unit:
+        minItems: 0
+        maxItems: 0
+
+      discrete_set:
+        type: array
+        items:
+          anyOf:
+            - type: number
+            - type: string
+
+    required: ["axes_order"]
+
+  - $ref: frame-1.2.0
+...
