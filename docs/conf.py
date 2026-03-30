@@ -30,7 +30,16 @@ from pathlib import Path
 # Ensure documentation examples are deterministically random.
 import numpy
 import tomli
-from pkg_resources import get_distribution
+
+# The standard library importlib.metadata returns duplicate entrypoints
+# for all python versions up to and including 3.11
+# https://github.com/python/importlib_metadata/issues/410#issuecomment-1304258228
+# see PR https://github.com/asdf-format/asdf/pull/1260
+# see issue https://github.com/asdf-format/asdf/issues/1254
+if sys.version_info >= (3, 12):
+    from importlib.metadata import distribution
+else:
+    from importlib_metadata import distribution
 
 try:
     numpy.random.seed(int(os.environ["SOURCE_DATE_EPOCH"]))
@@ -55,7 +64,7 @@ project = configuration["name"]
 author = configuration["authors"][0]["name"]
 copyright = f"{datetime.datetime.now().year}, {author}"
 
-release = get_distribution(configuration["name"]).version
+release = distribution(configuration["name"]).version
 version = ".".join(release.split(".")[:2])
 
 # If your documentation needs a minimal Sphinx version, state it here.
